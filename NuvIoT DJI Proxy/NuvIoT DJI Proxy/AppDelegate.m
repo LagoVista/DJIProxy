@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import <DJISDK/DJISDK.h>
 
 @interface AppDelegate ()
 
@@ -16,10 +18,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UINavigationController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc]
+                                                                             initWithNibName:@"ViewController"  bundle:nil]];
+
+    [rootViewController.navigationBar setBackgroundColor:[UIColor blackColor]];
+    [rootViewController setToolbarHidden:YES];
+    [self customizeAppearance];
+    
+    self.window.rootViewController = rootViewController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
+-(void) customizeAppearance {
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:(double)(0x2a)/255 green:(double)(0x3b)/255 blue:(double)(0x55)/255 alpha:1.0]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

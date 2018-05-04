@@ -7,24 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52BA12D6209CE7E400A24FBC /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52BA12D5209CE7E400A24FBC /* ViewController.xib */; };
+		52BA12DB209D048E00A24FBC /* TelemetryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA12D8209D048E00A24FBC /* TelemetryViewController.m */; };
+		52BA12DC209D048E00A24FBC /* TelemetryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52BA12D9209D048E00A24FBC /* TelemetryViewController.xib */; };
 		52FA036A209CD4BF0094375C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FA0369209CD4BF0094375C /* AppDelegate.m */; };
 		52FA036D209CD4BF0094375C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FA036C209CD4BF0094375C /* ViewController.m */; };
-		52FA0370209CD4BF0094375C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FA036E209CD4BF0094375C /* Main.storyboard */; };
 		52FA0372209CD4C00094375C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FA0371209CD4C00094375C /* Assets.xcassets */; };
-		52FA0375209CD4C00094375C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FA0373209CD4C00094375C /* LaunchScreen.storyboard */; };
 		52FA0378209CD4C00094375C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FA0377209CD4C00094375C /* main.m */; };
 		EEBCA1A2514A445D3A827DE6 /* libPods-NuvIoT DJI Proxy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608909382A6012BD3CE1F35 /* libPods-NuvIoT DJI Proxy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52BA12D5209CE7E400A24FBC /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		52BA12D8209D048E00A24FBC /* TelemetryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TelemetryViewController.m; path = "NuvIoT DJI Proxy/views/TelemetryViewController.m"; sourceTree = SOURCE_ROOT; };
+		52BA12D9209D048E00A24FBC /* TelemetryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TelemetryViewController.xib; path = "NuvIoT DJI Proxy/views/TelemetryViewController.xib"; sourceTree = SOURCE_ROOT; };
+		52BA12DA209D048E00A24FBC /* TelemetryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TelemetryViewController.h; path = "NuvIoT DJI Proxy/views/TelemetryViewController.h"; sourceTree = SOURCE_ROOT; };
 		52FA0365209CD4BE0094375C /* NuvIoT DJI Proxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NuvIoT DJI Proxy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FA0368209CD4BE0094375C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		52FA0369209CD4BF0094375C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		52FA036B209CD4BF0094375C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		52FA036C209CD4BF0094375C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		52FA036F209CD4BF0094375C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52FA0371209CD4C00094375C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		52FA0374209CD4C00094375C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52FA0376209CD4C00094375C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52FA0377209CD4C00094375C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5608909382A6012BD3CE1F35 /* libPods-NuvIoT DJI Proxy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NuvIoT DJI Proxy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52BA12D7209D047A00A24FBC /* views */ = {
+			isa = PBXGroup;
+			children = (
+				52BA12DA209D048E00A24FBC /* TelemetryViewController.h */,
+				52BA12D8209D048E00A24FBC /* TelemetryViewController.m */,
+				52BA12D9209D048E00A24FBC /* TelemetryViewController.xib */,
+			);
+			name = views;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		52FA035C209CD4BE0094375C = {
 			isa = PBXGroup;
 			children = (
@@ -65,15 +79,15 @@
 		52FA0367209CD4BE0094375C /* NuvIoT DJI Proxy */ = {
 			isa = PBXGroup;
 			children = (
+				52BA12D7209D047A00A24FBC /* views */,
 				52FA0368209CD4BE0094375C /* AppDelegate.h */,
 				52FA0369209CD4BF0094375C /* AppDelegate.m */,
 				52FA036B209CD4BF0094375C /* ViewController.h */,
 				52FA036C209CD4BF0094375C /* ViewController.m */,
-				52FA036E209CD4BF0094375C /* Main.storyboard */,
 				52FA0371209CD4C00094375C /* Assets.xcassets */,
-				52FA0373209CD4C00094375C /* LaunchScreen.storyboard */,
 				52FA0376209CD4C00094375C /* Info.plist */,
 				52FA0377209CD4C00094375C /* main.m */,
+				52BA12D5209CE7E400A24FBC /* ViewController.xib */,
 			);
 			path = "NuvIoT DJI Proxy";
 			sourceTree = "<group>";
@@ -154,9 +168,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52FA0375209CD4C00094375C /* LaunchScreen.storyboard in Resources */,
+				52BA12D6209CE7E400A24FBC /* ViewController.xib in Resources */,
 				52FA0372209CD4C00094375C /* Assets.xcassets in Resources */,
-				52FA0370209CD4BF0094375C /* Main.storyboard in Resources */,
+				52BA12DC209D048E00A24FBC /* TelemetryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,30 +222,12 @@
 			files = (
 				52FA036D209CD4BF0094375C /* ViewController.m in Sources */,
 				52FA0378209CD4C00094375C /* main.m in Sources */,
+				52BA12DB209D048E00A24FBC /* TelemetryViewController.m in Sources */,
 				52FA036A209CD4BF0094375C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		52FA036E209CD4BF0094375C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				52FA036F209CD4BF0094375C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		52FA0373209CD4C00094375C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				52FA0374209CD4C00094375C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		52FA0379209CD4C00094375C /* Debug */ = {
