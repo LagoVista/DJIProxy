@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <DJISDK/DJISDK.h>
+#import "MQTTClient.h"
+#import <MQTTClient/MQTTSessionManager.h>
 
-@interface ViewController : UIViewController<DJISDKManagerDelegate>
+@interface ViewController : UIViewController<DJISDKManagerDelegate,MQTTSessionDelegate>
 
 -(IBAction)onOpenClick :(id)sender;
 

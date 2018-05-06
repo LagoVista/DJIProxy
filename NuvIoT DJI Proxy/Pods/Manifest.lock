@@ -1,16 +1,27 @@
 PODS:
   - DJI-SDK-iOS (4.5.1)
+  - MQTTClient (0.14.0):
+    - MQTTClient/Core (= 0.14.0)
+  - MQTTClient/Core (0.14.0):
+    - MQTTClient/Manager
+    - MQTTClient/Min
+  - MQTTClient/Manager (0.14.0):
+    - MQTTClient/Min
+  - MQTTClient/Min (0.14.0)
 
 DEPENDENCIES:
   - DJI-SDK-iOS (~> 4.0)
+  - MQTTClient
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - DJI-SDK-iOS
+    - MQTTClient
 
 SPEC CHECKSUMS:
   DJI-SDK-iOS: b8a99d90efd59855f4f1319071917a32e5536cbe
+  MQTTClient: eea2eaaa6ddef852a1019a4dda091e22ad928b58
 
-PODFILE CHECKSUM: f1ef2dd72f1238202d9587d15171c50a8382c82d
+PODFILE CHECKSUM: b93a6405113a2c75b6878f8c665186c258c3d343
 
 COCOAPODS: 1.5.0

@@ -9,10 +9,14 @@
 #import "ViewController.h"
 #import "TelemetryViewController.h"
 #import <DJISDK/DJISDK.h>
+#import "MQTTClient.h"
 
 @interface ViewController ()<DJISDKManagerDelegate, DJIFlightControllerDelegate>
 
 @property (nonatomic, weak) DJIBaseProduct* product;
+
+@property (nonatomic, strong) MQTTSession *mqttSession;
+@property (strong, nonatomic) MQTTSessionManager *manager;
 
 @property (weak, nonatomic) IBOutlet UILabel *productModel;
 @property (weak, nonatomic) IBOutlet UILabel *productConnectionStatus;
@@ -27,6 +31,70 @@
 -(IBAction)onOpenClick :(id)sender {
     TelemetryViewController *vc = [[TelemetryViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(IBAction)onSendMsgClick:(id)sender {
+    NSString *msg = @"{'status':'ok'}";
+    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    [self.mqttSession publishData:data onTopic:@"drone/status/dji001"];
+}
+
+-(void) mqttConnect {
+    MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
+    transport.host = @"mqttdev.nuviot.com";
+    transport.port = 1883;
+    
+    _mqttSession = [[MQTTSession alloc] init];
+    _mqttSession.userName = @"kevinw";
+    _mqttSession.password = @"Test1234";
+    _mqttSession.transport = transport;
+    
+    [self.mqttSession addObserver:self forKeyPath:@"status"
+                          options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:nil];
+    
+    [_mqttSession connectWithConnectHandler:^(NSError *error) {
+        if(error) {
+            NSLog(@"NOPE");
+        }
+        else {
+            [self.mqttSession subscribeTopic:@"drone/action/dji001"];
+            NSLog(@"Yup");
+    
+        }
+    }];
+}
+
+- (void)newMessage:(MQTTSession *)session
+              data:(NSData *)data
+           onTopic:(NSString *)topic
+               qos:(MQTTQosLevel)qos
+          retained:(BOOL)retained
+               mid:(unsigned int)mid {
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"Message Contents: %@", str);
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    switch (self.mqttSession.status) {
+        case MQTTSessionStatusCreated:
+            NSLog(@"Session Created");
+            break;
+        case MQTTSessionStatusConnecting:
+            NSLog(@"Connecting` ");
+            break;
+        case MQTTSessionStatusConnected:
+            NSLog(@"Connected");
+            break;
+        case MQTTSessionStatusDisconnecting:
+            NSLog(@"Disconnecting");
+            break;
+        case MQTTSessionStatusClosed:
+            NSLog(@"Status Closed");
+            break;
+        case MQTTSessionStatusError:
+            NSLog(@"Status Error");
+            break;
+    }
 }
 
 -(void) productConnected:(DJIBaseProduct *)product {
@@ -58,8 +126,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerApp];
+    [self mqttConnect];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+-(void)viewDidDisappear:(BOOL)animated {
+ }
 
 -(void)registerApp {
     [DJISDKManager registerAppWithDelegate:self];
