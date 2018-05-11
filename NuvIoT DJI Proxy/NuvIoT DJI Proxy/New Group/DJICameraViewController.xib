@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DJICameraViewController">
             <connections>
+                <outlet property="currentRecordTimeLabel" destination="I1p-cI-yII" id="NIF-TL-g4T"/>
                 <outlet property="fpvPreviewView" destination="xFg-ht-IHt" id="gBO-wD-fCv"/>
                 <outlet property="recordBtn" destination="Hci-mt-CSN" id="yJO-5z-kHw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vLZ-cj-BUN"/>
@@ -29,16 +30,6 @@
                         <action selector="captureAction:" destination="-1" eventType="touchUpInside" id="xAW-sm-eGu"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hci-mt-CSN">
-                    <rect key="frame" x="92" y="628" width="64" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="64" id="Rww-X4-xcR"/>
-                    </constraints>
-                    <state key="normal" title="Record"/>
-                    <connections>
-                        <action selector="recordAction:" destination="-1" eventType="touchUpInside" id="onf-Io-fKN"/>
-                    </connections>
-                </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VFw-MI-Bot">
                     <rect key="frame" x="170" y="630" width="195" height="29"/>
                     <constraints>
@@ -53,27 +44,53 @@
                     </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-3f-vjX" userLabel="MainView">
-                    <rect key="frame" x="0.0" y="38" width="376" height="570"/>
+                    <rect key="frame" x="0.0" y="38" width="375" height="570"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFg-ht-IHt">
-                            <rect key="frame" x="0.0" y="-8" width="376" height="578"/>
+                            <rect key="frame" x="0.0" y="-8" width="375" height="578"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhK-Kd-HBd">
+                                    <rect key="frame" x="273" y="529" width="94" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1p-cI-yII">
+                                    <rect key="frame" x="273" y="529" width="94" height="41"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hci-mt-CSN">
+                    <rect key="frame" x="100" y="627" width="64" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="ln1-aB-AeZ"/>
+                    </constraints>
+                    <state key="normal" title="Record"/>
+                    <connections>
+                        <action selector="recordAction:" destination="-1" eventType="touchUpInside" id="onf-Io-fKN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Hci-mt-CSN" firstAttribute="baseline" secondItem="Gu5-xM-QXO" secondAttribute="baseline" id="0dI-U9-fVy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VFw-MI-Bot" secondAttribute="bottom" constant="9" id="2tQ-3d-0ij"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Pe1-3f-vjX" secondAttribute="bottom" constant="59" id="MA7-IO-REe"/>
                 <constraint firstItem="Pe1-3f-vjX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="QXi-Z8-VWC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Gu5-xM-QXO" secondAttribute="bottom" constant="10" id="RSm-BG-WeC"/>
+                <constraint firstItem="Hci-mt-CSN" firstAttribute="leading" secondItem="Gu5-xM-QXO" secondAttribute="trailing" constant="29" id="jTh-4y-YlM"/>
                 <constraint firstItem="Pe1-3f-vjX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lub-r8-FiA"/>
                 <constraint firstItem="Gu5-xM-QXO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="o5d-UB-OQd"/>
-                <constraint firstItem="Hci-mt-CSN" firstAttribute="top" secondItem="Pe1-3f-vjX" secondAttribute="bottom" constant="20" id="oTS-d2-QQ8"/>
-                <constraint firstItem="VFw-MI-Bot" firstAttribute="leading" secondItem="Hci-mt-CSN" secondAttribute="trailing" constant="14" id="sVa-F7-y6V"/>
                 <constraint firstItem="VFw-MI-Bot" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-10" id="vMo-My-Q9Q"/>
                 <constraint firstItem="Pe1-3f-vjX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="x1k-dO-40b"/>
             </constraints>

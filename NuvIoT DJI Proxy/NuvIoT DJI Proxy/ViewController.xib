@@ -15,6 +15,8 @@
                 <outlet property="connectButton" destination="Odl-ld-f9E" id="5pE-gB-fRA"/>
                 <outlet property="productConnectionStatus" destination="CUE-2M-MeR" id="Fp3-SK-rj0"/>
                 <outlet property="productModel" destination="xyi-ST-nkz" id="k2e-sF-1hT"/>
+                <outlet property="showVideoButton" destination="5vk-ts-ztW" id="6Jl-zX-c5e"/>
+                <outlet property="telemetryButton" destination="Odl-ld-f9E" id="3pS-Ll-58F"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ru2-cS-t2O"/>
             </connections>
         </placeholder>
@@ -23,8 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status: Trying to connect..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUE-2M-MeR">
-                    <rect key="frame" x="125" y="87" width="164" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: Trying to connect..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUE-2M-MeR">
+                    <rect key="frame" x="0.0" y="243.66666666666666" width="414" height="13.333333333333343"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -36,8 +38,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odl-ld-f9E">
-                    <rect key="frame" x="90" y="323" width="235" height="48"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odl-ld-f9E">
+                    <rect key="frame" x="90" y="344" width="235" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="3HI-ro-A7y"/>
                         <constraint firstAttribute="width" constant="235" id="WBJ-Fx-TTm"/>
@@ -49,8 +51,8 @@
                         <action selector="onOpenClick:" destination="-1" eventType="touchUpInside" id="Upn-uB-79C"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t8-o5-VvM">
-                    <rect key="frame" x="87" y="426" width="235" height="48"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t8-o5-VvM">
+                    <rect key="frame" x="89.666666666666686" y="414" width="235" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="aya-k2-6U9"/>
                         <constraint firstAttribute="width" constant="235" id="zFL-Gw-nBi"/>
@@ -63,15 +65,30 @@
                         <action selector="onSendMsgClick:" destination="-1" eventType="touchUpInside" id="qB5-lO-sv1"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vk-ts-ztW" userLabel="Show Video">
+                    <rect key="frame" x="89.666666666666686" y="490" width="235" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Dc9-gg-OYI"/>
+                        <constraint firstAttribute="width" constant="235" id="pY2-5p-db3"/>
+                    </constraints>
+                    <state key="normal" title="Show Video" backgroundImage="btn">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onShowVideoClick:" destination="-1" eventType="touchUpInside" id="RYA-wq-u1X"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="CUE-2M-MeR" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="619-cb-7lA"/>
                 <constraint firstItem="CUE-2M-MeR" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="6si-FD-OAa"/>
                 <constraint firstItem="7t8-o5-VvM" firstAttribute="centerY" secondItem="Odl-ld-f9E" secondAttribute="centerY" constant="70" id="L0O-K2-UZT"/>
+                <constraint firstItem="5vk-ts-ztW" firstAttribute="top" secondItem="7t8-o5-VvM" secondAttribute="bottom" constant="28" id="Lzv-w0-Q6u"/>
                 <constraint firstItem="Odl-ld-f9E" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cWh-T7-Ee4"/>
                 <constraint firstItem="7t8-o5-VvM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mWS-8l-BFP"/>
                 <constraint firstItem="Odl-ld-f9E" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oe4-RC-Doo"/>
+                <constraint firstItem="5vk-ts-ztW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="thd-TQ-Il8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="CUE-2M-MeR" secondAttribute="bottom" constant="479" id="u9m-qL-Q9a"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

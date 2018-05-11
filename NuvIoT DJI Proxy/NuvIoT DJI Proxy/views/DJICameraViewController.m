@@ -121,8 +121,7 @@
     [DJISDKManager registerAppWithDelegate:self];
 }
 
-- (NSString *)formattingSeconds:(NSUInteger)seconds
-{
+- (NSString *)formattingSeconds:(NSUInteger)seconds{
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:seconds];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"mm:ss"];
@@ -133,8 +132,7 @@
 }
 
 #pragma mark DJISDKManagerDelegate Method
-- (void)productConnected:(DJIBaseProduct *)product
-{
+- (void)productConnected:(DJIBaseProduct *)product{
     if(product){
         DJICamera *camera = [self fetchCamera];
         if (camera != nil) {
@@ -146,8 +144,7 @@
     [self showAlertViewWithTitle:@"productConnected" withMessage:@""];
 }
 
-- (void)productDisconnected
-{
+- (void)productDisconnected{
     DJICamera *camera = [self fetchCamera];
     if (camera && camera.delegate == self) {
         [camera setDelegate:nil];
@@ -204,8 +201,7 @@
 
 #pragma mark - IBAction Methods
 
-- (IBAction)captureAction:(id)sender {
-    
+- (IBAction)captureAction:(id)sender {    
     DJICamera* camera = [self fetchCamera];
     if (camera) {
         WeakRef(target);

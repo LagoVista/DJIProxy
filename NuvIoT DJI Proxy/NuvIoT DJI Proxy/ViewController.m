@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "./views/TelemetryViewController.h"
+#import "./views/DJICameraViewController.h"
 
 #import "MQTTClient.h"
 
@@ -23,10 +24,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *version;
 
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
+@property (weak, nonatomic) IBOutlet UIButton *telemetryButton;
+@property (weak, nonatomic) IBOutlet UIButton *showVideoButton;
 
 @end
 
 @implementation ViewController
+
+-(IBAction)onShowVideoClick:(id)sender {
+    DJICameraViewController *vc = [[DJICameraViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 -(IBAction)onOpenClick :(id)sender {
     TelemetryViewController *vc = [[TelemetryViewController alloc] init];
