@@ -8,7 +8,12 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #import <DJISDK/DJISDK.h>
+
+#pragma clang diagnostic pop
 
 @interface AppDelegate ()
 

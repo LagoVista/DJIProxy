@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "TelemetryViewController.h"
-#import <DJISDK/DJISDK.h>
+#import "./views/TelemetryViewController.h"
+
 #import "MQTTClient.h"
 
 @interface ViewController ()<DJISDKManagerDelegate, DJIFlightControllerDelegate>

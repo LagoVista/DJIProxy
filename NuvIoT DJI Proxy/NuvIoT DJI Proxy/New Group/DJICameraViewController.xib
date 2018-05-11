@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DJICameraViewController">
+            <connections>
+                <outlet property="fpvPreviewView" destination="xFg-ht-IHt" id="gBO-wD-fCv"/>
+                <outlet property="recordBtn" destination="Hci-mt-CSN" id="yJO-5z-kHw"/>
+                <outlet property="view" destination="iN0-l3-epB" id="vLZ-cj-BUN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gu5-xM-QXO">
+                    <rect key="frame" x="16" y="627" width="55" height="30"/>
+                    <state key="normal" title="Capture"/>
+                    <connections>
+                        <action selector="captureAction:" destination="-1" eventType="touchUpInside" id="xAW-sm-eGu"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hci-mt-CSN">
+                    <rect key="frame" x="92" y="628" width="64" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="Rww-X4-xcR"/>
+                    </constraints>
+                    <state key="normal" title="Record"/>
+                    <connections>
+                        <action selector="recordAction:" destination="-1" eventType="touchUpInside" id="onf-Io-fKN"/>
+                    </connections>
+                </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VFw-MI-Bot">
+                    <rect key="frame" x="170" y="630" width="195" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="195" id="BNh-sX-Sin"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Capture Mode"/>
+                        <segment title="Record Mode"/>
+                    </segments>
+                    <connections>
+                        <action selector="changeWorkModeAction:" destination="-1" eventType="valueChanged" id="V6E-Be-w8V"/>
+                    </connections>
+                </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-3f-vjX" userLabel="MainView">
+                    <rect key="frame" x="0.0" y="38" width="376" height="570"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFg-ht-IHt">
+                            <rect key="frame" x="0.0" y="-8" width="376" height="578"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VFw-MI-Bot" secondAttribute="bottom" constant="9" id="2tQ-3d-0ij"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Pe1-3f-vjX" secondAttribute="bottom" constant="59" id="MA7-IO-REe"/>
+                <constraint firstItem="Pe1-3f-vjX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="QXi-Z8-VWC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Gu5-xM-QXO" secondAttribute="bottom" constant="10" id="RSm-BG-WeC"/>
+                <constraint firstItem="Pe1-3f-vjX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lub-r8-FiA"/>
+                <constraint firstItem="Gu5-xM-QXO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="o5d-UB-OQd"/>
+                <constraint firstItem="Hci-mt-CSN" firstAttribute="top" secondItem="Pe1-3f-vjX" secondAttribute="bottom" constant="20" id="oTS-d2-QQ8"/>
+                <constraint firstItem="VFw-MI-Bot" firstAttribute="leading" secondItem="Hci-mt-CSN" secondAttribute="trailing" constant="14" id="sVa-F7-y6V"/>
+                <constraint firstItem="VFw-MI-Bot" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-10" id="vMo-My-Q9Q"/>
+                <constraint firstItem="Pe1-3f-vjX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="x1k-dO-40b"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #import <DJISDK/DJISDK.h>
 #import "MQTTClient.h"
 #import <MQTTClient/MQTTSessionManager.h>

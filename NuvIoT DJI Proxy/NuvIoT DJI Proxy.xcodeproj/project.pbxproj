@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52B2CA9620A5B388009066EA /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2CA9520A5B317009066EA /* VideoPreviewer.framework */; };
+		52B2CA9720A5B388009066EA /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2CA9520A5B317009066EA /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		52B2CA9C20A5B3CE009066EA /* DJICameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B2CA9B20A5B3CE009066EA /* DJICameraViewController.xib */; };
+		52B2CA9F20A5B48A009066EA /* DJICameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B2CA9E20A5B48A009066EA /* DJICameraViewController.m */; };
 		52BA12D6209CE7E400A24FBC /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52BA12D5209CE7E400A24FBC /* ViewController.xib */; };
 		52BA12DB209D048E00A24FBC /* TelemetryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA12D8209D048E00A24FBC /* TelemetryViewController.m */; };
 		52BA12DC209D048E00A24FBC /* TelemetryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52BA12D9209D048E00A24FBC /* TelemetryViewController.xib */; };
@@ -17,7 +21,42 @@
 		EEBCA1A2514A445D3A827DE6 /* libPods-NuvIoT DJI Proxy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608909382A6012BD3CE1F35 /* libPods-NuvIoT DJI Proxy.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		52B2CA9420A5B317009066EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52B2CA9020A5B317009066EA /* VideoPreviewer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 02A543FD1C3C51CB0083C11B;
+			remoteInfo = VideoPreviewer;
+		};
+		52B2CA9820A5B388009066EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52B2CA9020A5B317009066EA /* VideoPreviewer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 02A543FC1C3C51CB0083C11B;
+			remoteInfo = VideoPreviewer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		52B2CA9A20A5B388009066EA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				52B2CA9720A5B388009066EA /* VideoPreviewer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		52B2CA9020A5B317009066EA /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VideoPreviewer.xcodeproj; path = "NuvIoT DJI Proxy/Frameworks/VideoPreviewer/VideoPreviewer.xcodeproj"; sourceTree = "<group>"; };
+		52B2CA9B20A5B3CE009066EA /* DJICameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DJICameraViewController.xib; sourceTree = "<group>"; };
+		52B2CA9D20A5B45D009066EA /* DJICameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DJICameraViewController.h; path = "NuvIoT DJI Proxy/views/DJICameraViewController.h"; sourceTree = SOURCE_ROOT; };
+		52B2CA9E20A5B48A009066EA /* DJICameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DJICameraViewController.m; path = "NuvIoT DJI Proxy/views/DJICameraViewController.m"; sourceTree = SOURCE_ROOT; };
 		52BA12D5209CE7E400A24FBC /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		52BA12D8209D048E00A24FBC /* TelemetryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TelemetryViewController.m; path = "NuvIoT DJI Proxy/views/TelemetryViewController.m"; sourceTree = SOURCE_ROOT; };
 		52BA12D9209D048E00A24FBC /* TelemetryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TelemetryViewController.xib; path = "NuvIoT DJI Proxy/views/TelemetryViewController.xib"; sourceTree = SOURCE_ROOT; };
@@ -40,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B2CA9620A5B388009066EA /* VideoPreviewer.framework in Frameworks */,
 				EEBCA1A2514A445D3A827DE6 /* libPods-NuvIoT DJI Proxy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,12 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52B2CA9120A5B317009066EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52B2CA9520A5B317009066EA /* VideoPreviewer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		52BA12D7209D047A00A24FBC /* views */ = {
 			isa = PBXGroup;
 			children = (
 				52BA12DA209D048E00A24FBC /* TelemetryViewController.h */,
 				52BA12D8209D048E00A24FBC /* TelemetryViewController.m */,
 				52BA12D9209D048E00A24FBC /* TelemetryViewController.xib */,
+				52B2CA9B20A5B3CE009066EA /* DJICameraViewController.xib */,
+				52B2CA9D20A5B45D009066EA /* DJICameraViewController.h */,
+				52B2CA9E20A5B48A009066EA /* DJICameraViewController.m */,
 			);
 			name = views;
 			path = "New Group";
@@ -95,6 +146,7 @@
 		61FBCFB384E344B66CF6F460 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52B2CA9020A5B317009066EA /* VideoPreviewer.xcodeproj */,
 				5608909382A6012BD3CE1F35 /* libPods-NuvIoT DJI Proxy.a */,
 			);
 			name = Frameworks;
@@ -121,10 +173,12 @@
 				52FA0362209CD4BE0094375C /* Frameworks */,
 				52FA0363209CD4BE0094375C /* Resources */,
 				7935A8EB3A720B665BD5B187 /* [CP] Embed Pods Frameworks */,
+				52B2CA9A20A5B388009066EA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				52B2CA9920A5B388009066EA /* PBXTargetDependency */,
 			);
 			name = "NuvIoT DJI Proxy";
 			productName = "NuvIoT DJI Proxy";
@@ -156,6 +210,12 @@
 			mainGroup = 52FA035C209CD4BE0094375C;
 			productRefGroup = 52FA0366209CD4BE0094375C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 52B2CA9120A5B317009066EA /* Products */;
+					ProjectRef = 52B2CA9020A5B317009066EA /* VideoPreviewer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				52FA0364209CD4BE0094375C /* NuvIoT DJI Proxy */,
@@ -163,12 +223,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		52B2CA9520A5B317009066EA /* VideoPreviewer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VideoPreviewer.framework;
+			remoteRef = 52B2CA9420A5B317009066EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		52FA0363209CD4BE0094375C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				52BA12D6209CE7E400A24FBC /* ViewController.xib in Resources */,
+				52B2CA9C20A5B3CE009066EA /* DJICameraViewController.xib in Resources */,
 				52FA0372209CD4C00094375C /* Assets.xcassets in Resources */,
 				52BA12DC209D048E00A24FBC /* TelemetryViewController.xib in Resources */,
 			);
@@ -224,10 +295,19 @@
 				52FA0378209CD4C00094375C /* main.m in Sources */,
 				52BA12DB209D048E00A24FBC /* TelemetryViewController.m in Sources */,
 				52FA036A209CD4BF0094375C /* AppDelegate.m in Sources */,
+				52B2CA9F20A5B48A009066EA /* DJICameraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52B2CA9920A5B388009066EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VideoPreviewer;
+			targetProxy = 52B2CA9820A5B388009066EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		52FA0379209CD4C00094375C /* Debug */ = {
