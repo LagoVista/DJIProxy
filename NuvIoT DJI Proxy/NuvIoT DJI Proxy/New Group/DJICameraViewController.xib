@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DJICameraViewController">
             <connections>
                 <outlet property="currentRecordTimeLabel" destination="I1p-cI-yII" id="NIF-TL-g4T"/>
-                <outlet property="fpvPreviewView" destination="xFg-ht-IHt" id="gBO-wD-fCv"/>
+                <outlet property="fpvPreviewView" destination="xFg-ht-IHt" id="f3R-nv-ns1"/>
                 <outlet property="recordBtn" destination="Hci-mt-CSN" id="yJO-5z-kHw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vLZ-cj-BUN"/>
             </connections>

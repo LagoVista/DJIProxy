@@ -150,7 +150,6 @@
         [camera setDelegate:nil];
     }
     [self resetVideoPreview];
-    
 }
 
 #pragma mark DJISDKManagerDelegate Method
@@ -160,13 +159,19 @@
     NSString* message = @"Register App Successed!";
     if (error) {
         message = @"Register App Failed! Please enter your App Key and check the network.";
+        [self showAlertViewWithTitle:@"Register App" withMessage:message];
     }else
     {
         NSLog(@"registerAppSuccess");
-        [DJISDKManager startConnectionToProduct];
+        if([DJISDKManager product] != nil) {
+            DJICamera *camera = [self fetchCamera];
+            if (camera != nil) {
+                camera.delegate = self;
+            }
+            [self setupVideoPreviewer];
+        }
     }
     
-    [self showAlertViewWithTitle:@"Register App" withMessage:message];
 }
 
 #pragma mark - DJICameraDelegate
