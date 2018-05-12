@@ -6,12 +6,12 @@
 //  Copyright © 2018 Software Logistics, LLC. All rights reserved.
 //
 
-#ifndef DJIAircraftAnnotationView_h
-#define DJIAircraftAnnotationView_h
+#ifndef AircraftAnnotationView_h
+#define AircraftAnnotationView_h
 
 #import <MapKit/MapKit.h>
 
-@interface DJIAircraftAnnotationView : MKAnnotationView
+@interface AircraftAnnotationView : MKAnnotationView
 
 -(void) updateHeading:(float)heading;
 

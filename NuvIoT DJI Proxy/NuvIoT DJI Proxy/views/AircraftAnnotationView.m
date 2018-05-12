@@ -6,10 +6,9 @@
 //  Copyright © 2018 Software Logistics, LLC. All rights reserved.
 //
 
-#import "DJIAircraftAnnotationView.h"
-#import "DJIAircraftAnnotationView.h"
+#import "AircraftAnnotationView.h"
 
-@implementation DJIAircraftAnnotationView
+@implementation AircraftAnnotationView
 
 - (instancetype)initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {

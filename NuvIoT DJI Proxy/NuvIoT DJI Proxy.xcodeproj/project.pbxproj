@@ -9,10 +9,16 @@
 /* Begin PBXBuildFile section */
 		5249A29120A711CB000674B6 /* RouteBuilderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5249A29020A711CB000674B6 /* RouteBuilderViewController.xib */; };
 		5249A29420A7127A000674B6 /* RouteBuilderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A29320A7127A000674B6 /* RouteBuilderViewController.m */; };
-		5249A29720A713E8000674B6 /* DJIAircraftAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A29620A713E8000674B6 /* DJIAircraftAnnotation.m */; };
-		5249A29B20A714BA000674B6 /* DJIAircraftAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A29A20A714BA000674B6 /* DJIAircraftAnnotationView.m */; };
+		5249A29720A713E8000674B6 /* AircraftAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A29620A713E8000674B6 /* AircraftAnnotation.m */; };
+		5249A29B20A714BA000674B6 /* AircraftAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A29A20A714BA000674B6 /* AircraftAnnotationView.m */; };
 		5249A29F20A716F1000674B6 /* WaypointConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A29D20A716F1000674B6 /* WaypointConfigViewController.m */; };
 		5249A2A020A716F1000674B6 /* WaypointConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5249A29E20A716F1000674B6 /* WaypointConfigViewController.xib */; };
+		5249A2A520A72749000674B6 /* FlightViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A2A320A72749000674B6 /* FlightViewViewController.m */; };
+		5249A2A620A72749000674B6 /* FlightViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5249A2A420A72749000674B6 /* FlightViewViewController.xib */; };
+		5249A2A820A72811000674B6 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A2A720A72811000674B6 /* MapController.m */; };
+		5249A2B020A72A17000674B6 /* GSButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A2AE20A72A17000674B6 /* GSButtonViewController.m */; };
+		5249A2B120A72A17000674B6 /* GSButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5249A2AF20A72A17000674B6 /* GSButtonViewController.xib */; };
+		5249A2B520A72D38000674B6 /* SysUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A2B420A72D38000674B6 /* SysUtils.m */; };
 		52B2CA9620A5B388009066EA /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2CA9520A5B317009066EA /* VideoPreviewer.framework */; };
 		52B2CA9720A5B388009066EA /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2CA9520A5B317009066EA /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		52B2CA9C20A5B3CE009066EA /* DJICameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B2CA9B20A5B3CE009066EA /* DJICameraViewController.xib */; };
@@ -62,13 +68,23 @@
 		5249A29020A711CB000674B6 /* RouteBuilderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteBuilderViewController.xib; sourceTree = "<group>"; };
 		5249A29220A7120B000674B6 /* RouteBuilderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RouteBuilderViewController.h; path = "NuvIoT DJI Proxy/views/RouteBuilderViewController.h"; sourceTree = SOURCE_ROOT; };
 		5249A29320A7127A000674B6 /* RouteBuilderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RouteBuilderViewController.m; path = "NuvIoT DJI Proxy/views/RouteBuilderViewController.m"; sourceTree = SOURCE_ROOT; };
-		5249A29620A713E8000674B6 /* DJIAircraftAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DJIAircraftAnnotation.m; sourceTree = "<group>"; };
-		5249A29820A71424000674B6 /* DJIAircraftAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJIAircraftAnnotation.h; sourceTree = "<group>"; };
-		5249A29920A7146B000674B6 /* DJIAircraftAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DJIAircraftAnnotationView.h; path = "NuvIoT DJI Proxy/views/DJIAircraftAnnotationView.h"; sourceTree = SOURCE_ROOT; };
-		5249A29A20A714BA000674B6 /* DJIAircraftAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DJIAircraftAnnotationView.m; path = "NuvIoT DJI Proxy/views/DJIAircraftAnnotationView.m"; sourceTree = SOURCE_ROOT; };
+		5249A29620A713E8000674B6 /* AircraftAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AircraftAnnotation.m; sourceTree = "<group>"; };
+		5249A29820A71424000674B6 /* AircraftAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AircraftAnnotation.h; sourceTree = "<group>"; };
+		5249A29920A7146B000674B6 /* AircraftAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AircraftAnnotationView.h; path = "NuvIoT DJI Proxy/views/AircraftAnnotationView.h"; sourceTree = SOURCE_ROOT; };
+		5249A29A20A714BA000674B6 /* AircraftAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AircraftAnnotationView.m; path = "NuvIoT DJI Proxy/views/AircraftAnnotationView.m"; sourceTree = SOURCE_ROOT; };
 		5249A29C20A716F1000674B6 /* WaypointConfigViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaypointConfigViewController.h; path = "NuvIoT DJI Proxy/views/WaypointConfigViewController.h"; sourceTree = SOURCE_ROOT; };
 		5249A29D20A716F1000674B6 /* WaypointConfigViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaypointConfigViewController.m; path = "NuvIoT DJI Proxy/views/WaypointConfigViewController.m"; sourceTree = SOURCE_ROOT; };
 		5249A29E20A716F1000674B6 /* WaypointConfigViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WaypointConfigViewController.xib; path = "NuvIoT DJI Proxy/views/WaypointConfigViewController.xib"; sourceTree = SOURCE_ROOT; };
+		5249A2A220A72749000674B6 /* FlightViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlightViewViewController.h; path = "NuvIoT DJI Proxy/views/FlightViewViewController.h"; sourceTree = SOURCE_ROOT; };
+		5249A2A320A72749000674B6 /* FlightViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FlightViewViewController.m; path = "NuvIoT DJI Proxy/views/FlightViewViewController.m"; sourceTree = SOURCE_ROOT; };
+		5249A2A420A72749000674B6 /* FlightViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FlightViewViewController.xib; path = "NuvIoT DJI Proxy/views/FlightViewViewController.xib"; sourceTree = SOURCE_ROOT; };
+		5249A2A720A72811000674B6 /* MapController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
+		5249A2A920A72824000674B6 /* MapController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
+		5249A2AD20A72A17000674B6 /* GSButtonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GSButtonViewController.h; path = "NuvIoT DJI Proxy/views/GSButtonViewController.h"; sourceTree = SOURCE_ROOT; };
+		5249A2AE20A72A17000674B6 /* GSButtonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GSButtonViewController.m; path = "NuvIoT DJI Proxy/views/GSButtonViewController.m"; sourceTree = SOURCE_ROOT; };
+		5249A2AF20A72A17000674B6 /* GSButtonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GSButtonViewController.xib; path = "NuvIoT DJI Proxy/views/GSButtonViewController.xib"; sourceTree = SOURCE_ROOT; };
+		5249A2B320A72CFD000674B6 /* SysUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SysUtils.h; sourceTree = "<group>"; };
+		5249A2B420A72D38000674B6 /* SysUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SysUtils.m; sourceTree = "<group>"; };
 		52B2CA9020A5B317009066EA /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VideoPreviewer.xcodeproj; path = "NuvIoT DJI Proxy/Frameworks/VideoPreviewer/VideoPreviewer.xcodeproj"; sourceTree = "<group>"; };
 		52B2CA9B20A5B3CE009066EA /* DJICameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DJICameraViewController.xib; sourceTree = "<group>"; };
 		52B2CA9D20A5B45D009066EA /* DJICameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DJICameraViewController.h; path = "NuvIoT DJI Proxy/views/DJICameraViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -106,8 +122,12 @@
 		5249A29520A713BC000674B6 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				5249A29620A713E8000674B6 /* DJIAircraftAnnotation.m */,
-				5249A29820A71424000674B6 /* DJIAircraftAnnotation.h */,
+				5249A29620A713E8000674B6 /* AircraftAnnotation.m */,
+				5249A29820A71424000674B6 /* AircraftAnnotation.h */,
+				5249A2A720A72811000674B6 /* MapController.m */,
+				5249A2A920A72824000674B6 /* MapController.h */,
+				5249A2B320A72CFD000674B6 /* SysUtils.h */,
+				5249A2B420A72D38000674B6 /* SysUtils.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -132,11 +152,17 @@
 				5249A29220A7120B000674B6 /* RouteBuilderViewController.h */,
 				5249A29020A711CB000674B6 /* RouteBuilderViewController.xib */,
 				5249A29320A7127A000674B6 /* RouteBuilderViewController.m */,
-				5249A29920A7146B000674B6 /* DJIAircraftAnnotationView.h */,
-				5249A29A20A714BA000674B6 /* DJIAircraftAnnotationView.m */,
+				5249A29920A7146B000674B6 /* AircraftAnnotationView.h */,
+				5249A29A20A714BA000674B6 /* AircraftAnnotationView.m */,
 				5249A29C20A716F1000674B6 /* WaypointConfigViewController.h */,
 				5249A29D20A716F1000674B6 /* WaypointConfigViewController.m */,
 				5249A29E20A716F1000674B6 /* WaypointConfigViewController.xib */,
+				5249A2A220A72749000674B6 /* FlightViewViewController.h */,
+				5249A2A320A72749000674B6 /* FlightViewViewController.m */,
+				5249A2A420A72749000674B6 /* FlightViewViewController.xib */,
+				5249A2AD20A72A17000674B6 /* GSButtonViewController.h */,
+				5249A2AE20A72A17000674B6 /* GSButtonViewController.m */,
+				5249A2AF20A72A17000674B6 /* GSButtonViewController.xib */,
 			);
 			name = views;
 			path = "New Group";
@@ -272,7 +298,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5249A2B120A72A17000674B6 /* GSButtonViewController.xib in Resources */,
 				5249A2A020A716F1000674B6 /* WaypointConfigViewController.xib in Resources */,
+				5249A2A620A72749000674B6 /* FlightViewViewController.xib in Resources */,
 				5249A29120A711CB000674B6 /* RouteBuilderViewController.xib in Resources */,
 				52BA12D6209CE7E400A24FBC /* ViewController.xib in Resources */,
 				52B2CA9C20A5B3CE009066EA /* DJICameraViewController.xib in Resources */,
@@ -329,13 +357,17 @@
 			files = (
 				52FA036D209CD4BF0094375C /* ViewController.m in Sources */,
 				52FA0378209CD4C00094375C /* main.m in Sources */,
-				5249A29720A713E8000674B6 /* DJIAircraftAnnotation.m in Sources */,
+				5249A2A820A72811000674B6 /* MapController.m in Sources */,
+				5249A29720A713E8000674B6 /* AircraftAnnotation.m in Sources */,
 				5249A29F20A716F1000674B6 /* WaypointConfigViewController.m in Sources */,
 				52BA12DB209D048E00A24FBC /* TelemetryViewController.m in Sources */,
 				52FA036A209CD4BF0094375C /* AppDelegate.m in Sources */,
 				5249A29420A7127A000674B6 /* RouteBuilderViewController.m in Sources */,
+				5249A2B020A72A17000674B6 /* GSButtonViewController.m in Sources */,
 				52B2CA9F20A5B48A009066EA /* DJICameraViewController.m in Sources */,
-				5249A29B20A714BA000674B6 /* DJIAircraftAnnotationView.m in Sources */,
+				5249A2B520A72D38000674B6 /* SysUtils.m in Sources */,
+				5249A29B20A714BA000674B6 /* AircraftAnnotationView.m in Sources */,
+				5249A2A520A72749000674B6 /* FlightViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

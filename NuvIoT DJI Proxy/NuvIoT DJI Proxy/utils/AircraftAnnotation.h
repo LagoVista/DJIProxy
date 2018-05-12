@@ -6,15 +6,15 @@
 //  Copyright © 2018 Software Logistics, LLC. All rights reserved.
 //
 
-#ifndef DJIAircraftAnnotation_h
-#define DJIAircraftAnnotation_h
+#ifndef AircraftAnnotation_h
+#define AircraftAnnotation_h
 #import <MapKit/MapKit.h>
-#import "DJIAircraftAnnotationView.h"
+#import "AircraftAnnotationView.h"
 
-@interface DJIAircraftAnnotation : NSObject<MKAnnotation>
+@interface AircraftAnnotation : NSObject<MKAnnotation>
 
 @property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property(nonatomic, weak) DJIAircraftAnnotationView* annotationView;
+@property(nonatomic, weak) AircraftAnnotationView* annotationView;
 
 -(id) initWithCoordiante:(CLLocationCoordinate2D)coordinate;
 

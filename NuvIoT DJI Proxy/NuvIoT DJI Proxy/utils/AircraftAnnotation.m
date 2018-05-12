@@ -6,9 +6,9 @@
 //  Copyright © 2018 Software Logistics, LLC. All rights reserved.
 //
 
-#import "DJIAircraftAnnotation.h"
+#import "AircraftAnnotation.h"
 
-@implementation DJIAircraftAnnotation
+@implementation AircraftAnnotation
 
 -(id) initWithCoordiante:(CLLocationCoordinate2D)coordinate
 {

@@ -1,16 +1,18 @@
 //
-//  RouteBuilderViewController.h
+//  MapController.h
 //  NuvIoT DJI Proxy
 //
 //  Created by Kevin D. Wolf on 5/12/18.
 //  Copyright © 2018 Software Logistics, LLC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef MapController_h
+#define MapController_h
+#import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "../utils/AircraftAnnotation.h"
+#import "AircraftAnnotation.h"
 
-@interface RouteBuilderViewController : UIViewController
+@interface MapController : NSObject
 
 @property (strong, nonatomic) NSMutableArray *editPoints;
 @property (nonatomic, strong) AircraftAnnotation* aircraftAnnotation;
@@ -42,4 +44,7 @@
  */
 - (NSArray *)wayPoints;
 
+
 @end
+
+#endif /* MapController_h */

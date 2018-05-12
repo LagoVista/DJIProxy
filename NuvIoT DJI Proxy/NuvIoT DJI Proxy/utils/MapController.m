@@ -1,5 +1,5 @@
 //
-//  RouteBuilderViewController.m
+//  MapController.m
 //  NuvIoT DJI Proxy
 //
 //  Created by Kevin D. Wolf on 5/12/18.
@@ -7,22 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdocumentation"
+#import "MapController.h"
 
-#import <DJISDK/DJISDK.h>
-#import <VideoPreviewer/VideoPreviewer.h>
-
-#pragma clang diagnostic pop
-
-#import "RouteBuilderViewController.h"
-
-
-@interface RouteBuilderViewController ()
+@interface MapController ()
 
 @end
 
-@implementation RouteBuilderViewController
+@implementation MapController
 
 - (instancetype)init
 {
@@ -82,4 +73,6 @@
         [self.aircraftAnnotation updateHeading:heading];
     }
 }
+
+
 @end
