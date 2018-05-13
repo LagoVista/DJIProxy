@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "./views/TelemetryViewController.h"
 #import "./views/DJICameraViewController.h"
+#import "./views/RouteBuilderViewController.h"
+#import "./views/FlightViewController.h"
 
 #import "MQTTClient.h"
 
@@ -26,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
 @property (weak, nonatomic) IBOutlet UIButton *telemetryButton;
 @property (weak, nonatomic) IBOutlet UIButton *showVideoButton;
+@property (weak, nonatomic) IBOutlet UIButton *showRouteBuilderButton;
+@property (weak, nonatomic) IBOutlet UIButton *flightViewButton;
 
 @end
 
@@ -33,6 +37,16 @@
 
 -(IBAction)onShowVideoClick:(id)sender {
     DJICameraViewController *vc = [[DJICameraViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(IBAction)onRouteBuilderClick:(id)sender {
+    RouteBuilderViewController *vc = [[RouteBuilderViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(IBAction)showFlightViewClick:(id)sender {
+    FlightViewController *vc = [[FlightViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -135,7 +149,7 @@
     [super viewDidLoad];
     [self registerApp];
     [self mqttConnect];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.title = @"NavIoT - DJI Proxy";
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -149,14 +163,12 @@
     NSString *message = @"Register App Status.";
     if(error) {
         message = @"Register app failed, please enter your app key.";
-    }
+        [self showAlertWithTitle:@"Registration Status" withMessage:message];}
     else {
         message = @"Register App Success!";
         NSLog(@"App got registered");
         [DJISDKManager startConnectionToProduct];
     }
-    
-    [self showAlertWithTitle:@"Registration Status" withMessage:message];
 }
 
 -(void) showAlertWithTitle:(NSString *)title withMessage:(NSString *)message {

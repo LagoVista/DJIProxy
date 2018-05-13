@@ -6,25 +6,29 @@
 //  Copyright © 2018 Software Logistics, LLC. All rights reserved.
 //
 
-#import "FlightViewViewController.h"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
+#import <DJISDK/DJISDK.h>
+
+#pragma clang diagnostic pop
+
+#import "FlightViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import <DJISDK/DJISDK.h>
+
+#import "../cells/WayPointTableViewCell.h"
 #import "WaypointConfigViewController.h"
 #import "../utils/MapController.h"
 #import "../utils/SysUtils.h"
 #import "GSButtonViewController.h"
-@interface FlightViewController ()
-
-@end
+#import "../models/WayPoint.h"
 
 #define ENTER_DEBUG_MODE 0
 
-#define WeakRef(__obj) __weak typeof(self) __obj = self
-#define WeakReturn(__obj) if(__obj ==nil)return;
-#define RADIAN(x) ((x)*M_PI/180.0)
-
-@interface FlightViewController ()<GSButtonViewControllerDelegate, WaypointConfigViewControllerDelegate, MKMapViewDelegate, CLLocationManagerDelegate, DJISDKManagerDelegate, DJIFlightControllerDelegate>
+@interface FlightViewController ()<GSButtonViewControllerDelegate, WaypointConfigViewControllerDelegate,
+                                MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate,
+                                DJIFlightControllerDelegate>
 
 @property (nonatomic, assign) BOOL isEditingPoints;
 @property (nonatomic, strong) GSButtonViewController *gsButtonVC;
@@ -36,6 +40,7 @@
 @property(nonatomic, assign) CLLocationCoordinate2D droneLocation;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 
+@property (weak, nonatomic) IBOutlet UITableView *wayPointsTable;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *topBarView;
 @property(nonatomic, strong) IBOutlet UILabel* modeLabel;
@@ -63,9 +68,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self registerApp];
-    
+
     [self initUI];
     [self initData];
 }
@@ -79,9 +82,50 @@
     return NO;
 }
 
+#pragma Way Point Table View Delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.mapController.editPoints.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0f;
+}
+
+/*
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    // my code
+}*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *wayPointTableViewCellIdentifier = @"WAYPOINTTABLEVIEWCELL";
+    
+    WayPointTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:wayPointTableViewCellIdentifier];
+    
+    if (cell == nil) {
+        [tableView registerNib:[UINib nibWithNibName:@"WayPointTableViewCell" bundle:nil] forCellReuseIdentifier:wayPointTableViewCellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:wayPointTableViewCellIdentifier];
+    }
+    
+    WayPoint *wayPoint = [self.mapController.editPoints objectAtIndex:indexPath.row];
+    [cell setWayPoint:wayPoint];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // my code
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // my code
+}
+
+
 #pragma mark Init Methods
--(void)initData
-{
+-(void)initData{
     self.userLocation = kCLLocationCoordinate2DInvalid;
     self.droneLocation = kCLLocationCoordinate2DInvalid;
     
@@ -97,6 +141,9 @@
     self.vsLabel.text = @"0.0 M/S";
     self.hsLabel.text = @"0.0 M/S";
     self.altitudeLabel.text = @"0 M";
+    
+    self.wayPointsTable.dataSource = self;
+    self.wayPointsTable.delegate = self;
     
     self.gsButtonVC = [[GSButtonViewController alloc] initWithNibName:@"GSButtonViewController" bundle:[NSBundle mainBundle]];
     [self.gsButtonVC.view setFrame:CGRectMake(0, self.topBarView.frame.origin.y + self.topBarView.frame.size.height, self.gsButtonVC.view.frame.size.width, self.gsButtonVC.view.frame.size.height)];
@@ -116,12 +163,8 @@
     
     self.waypointConfigVC.delegate = self;
     [self.view addSubview:self.waypointConfigVC.view];
-}
-
--(void) registerApp
-{
-    //Please enter your App key in the info.plist file to register the app.
-    [DJISDKManager registerAppWithDelegate:self];
+    
+    self.navigationItem.title = @"Mission Editor";
 }
 
 -(DJIWaypointMissionOperator *)missionOperator {
@@ -161,20 +204,20 @@
 }
 
 #pragma mark UITapGestureRecognizer Methods
-- (void)addWaypoints:(UITapGestureRecognizer *)tapGesture
-{
+- (void)addWaypoints:(UITapGestureRecognizer *)tapGesture{
     CGPoint point = [tapGesture locationInView:self.mapView];
     
     if(tapGesture.state == UIGestureRecognizerStateEnded){
-        if (self.isEditingPoints)
+        if (self.isEditingPoints) {
             [self.mapController addPoint:point withMapView:self.mapView];
+            [self.wayPointsTable reloadData];
+        }
     }
 }
 
 #pragma mark - DJIWaypointConfigViewControllerDelegate Methods
 
-- (void)cancelBtnActionInDJIWaypointConfigViewController:(WaypointConfigViewController *)waypointConfigVC
-{
+- (void)cancelBtnActionInDJIWaypointConfigViewController:(WaypointConfigViewController *)waypointConfigVC{
     WeakRef(weakSelf);
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -184,16 +227,14 @@
     
 }
 
-- (void)showAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message
-{
+- (void)showAlertViewWithTitle:(NSString *)title withMessage:(NSString *)message{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)finishBtnActionInDJIWaypointConfigViewController:(WaypointConfigViewController *)waypointConfigVC
-{
+- (void)finishBtnActionInDJIWaypointConfigViewController:(WaypointConfigViewController *)waypointConfigVC{
     WeakRef(weakSelf);
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -258,13 +299,11 @@
     [self.mapController cleanAllPointsWithMapView:self.mapView];
 }
 
-- (void)focusMapBtnActionInGSButtonVC:(GSButtonViewController *)GSBtnVC
-{
+- (void)focusMapBtnActionInGSButtonVC:(GSButtonViewController *)GSBtnVC{
     [self focusMap];
 }
 
-- (void)configBtnActionInGSButtonVC:(GSButtonViewController *)GSBtnVC
-{
+- (void)configBtnActionInGSButtonVC:(GSButtonViewController *)GSBtnVC{
     WeakRef(weakSelf);
     
     NSArray* wayPoints = self.mapController.wayPoints;
@@ -295,8 +334,7 @@
     
 }
 
-- (void)startBtnActionInGSButtonVC:(GSButtonViewController *)GSBtnVC
-{
+- (void)startBtnActionInGSButtonVC:(GSButtonViewController *)GSBtnVC{
     [[self missionOperator] startMissionWithCompletion:^(NSError * _Nullable error) {
         if (error){
             ShowMessage(@"Start Mission Failed", error.description, nil, @"OK");
@@ -308,16 +346,13 @@
     
 }
 
-- (void)switchToMode:(GSViewMode)mode inGSButtonVC:(GSButtonViewController *)GSBtnVC
-{
+- (void)switchToMode:(GSViewMode)mode inGSButtonVC:(GSButtonViewController *)GSBtnVC{
     if (mode == GSViewMode_EditMode) {
         [self focusMap];
     }
-    
 }
 
-- (void)addBtn:(UIButton *)button withActionInGSButtonVC:(GSButtonViewController *)GSBtnVC
-{
+- (void)addBtn:(UIButton *)button withActionInGSButtonVC:(GSButtonViewController *)GSBtnVC{
     if (self.isEditingPoints) {
         self.isEditingPoints = NO;
         [button setTitle:@"Add" forState:UIControlStateNormal];
@@ -329,8 +364,7 @@
 }
 
 #pragma mark - CLLocationManagerDelegate
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation* location = [locations lastObject];
     self.userLocation = location.coordinate;
 }
@@ -368,6 +402,5 @@
     double radianYaw = RADIAN(state.attitude.yaw);
     [self.mapController updateAircraftHeading:radianYaw];
 }
-
 
 @end

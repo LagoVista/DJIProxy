@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MapController.h"
+#import "WayPoint.h"
 
 @interface MapController ()
 
@@ -26,16 +27,21 @@
     return self;
 }
 
-- (void)addPoint:(CGPoint)point withMapView:(MKMapView *)mapView
-{
-    
+- (void)addPoint:(CGPoint)point withMapView:(MKMapView *)mapView{
+    WayPoint *wayPoint = [[WayPoint alloc] init];
+
     CLLocationCoordinate2D coordinate = [mapView convertPoint:point toCoordinateFromView:mapView];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-    [_editPoints addObject:location];
-    MKPointAnnotation* annotation = [[MKPointAnnotation alloc] init];
-    annotation.coordinate = location.coordinate;
-    [mapView addAnnotation:annotation];
+    wayPoint.geoLocation = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    wayPoint.index = (int)_editPoints.count + 1;
+    wayPoint.title = [NSString stringWithFormat:@"Way Point %d", wayPoint.index];
+    wayPoint.speedMS = (_editPoints.count > 0) ? ((WayPoint*)_editPoints[_editPoints.count - 1]).speedMS : 1.0f;
+    wayPoint.altitude = (_editPoints.count > 0) ? ((WayPoint*)_editPoints[_editPoints.count - 1]).altitude : 1.0f;
+    wayPoint.notes = @"";
     
+    [_editPoints addObject:wayPoint];
+    MKPointAnnotation* annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = wayPoint.geoLocation.coordinate;
+    [mapView addAnnotation:annotation];
 }
 
 - (void)cleanAllPointsWithMapView:(MKMapView *)mapView
