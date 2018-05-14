@@ -12,6 +12,7 @@
 #pragma clang diagnostic ignored "-Wdocumentation"
 
 #import <DJISDK/DJISDK.h>
+#import "./views/LoginViewController.h"
 
 #pragma clang diagnostic pop
 
@@ -21,12 +22,21 @@
 
 @implementation AppDelegate
 
+BOOL _loggedIn = false;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UINavigationController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc]
-                                                                             initWithNibName:@"ViewController"  bundle:nil]];
+    UINavigationController *rootViewController;
+    
+    if(_loggedIn) {
+        rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc]
+                                                                                 initWithNibName:@"ViewController"  bundle:nil]];
+    }
+    else {
+        rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc]
+                                                                                         initWithNibName:@"LoginViewController"  bundle:nil]];
+    }
 
     [rootViewController.navigationBar setBackgroundColor:[UIColor blackColor]];
     [rootViewController setToolbarHidden:YES];

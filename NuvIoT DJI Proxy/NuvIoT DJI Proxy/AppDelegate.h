@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "./models/User.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, atomic) User *user;
 
 @end
 
