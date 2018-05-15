@@ -2,4 +2,5 @@
 target 'NuvIoT DJI Proxy' do
 pod 'DJI-SDK-iOS', '~> 4.0'
 pod 'MQTTClient'
+pod 'JSONModel'
 end

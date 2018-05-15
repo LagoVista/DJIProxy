@@ -9,5 +9,11 @@
 #ifndef Route_h
 #define Route_h
 
+#import "JSONModelLib.h"
+#import "LagoVistaModal.h"
+
+@interface Route : LagoVistaModel
+
+@end
 
 #endif /* Route_h */

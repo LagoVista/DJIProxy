@@ -10,8 +10,9 @@
 #define WayPoint_h
 
 #import <MapKit/MapKit.h>
+#import "JSONModelLib.h"
 
-@interface WayPoint : NSObject
+@interface WayPoint : JSONModel
 
 @property (strong, nonatomic) CLLocation *geoLocation;
 @property (strong, nonatomic) NSString *title;

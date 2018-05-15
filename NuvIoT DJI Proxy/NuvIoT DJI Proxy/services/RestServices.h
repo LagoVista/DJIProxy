@@ -8,8 +8,13 @@
 
 #ifndef RestServices_h
 #define RestServices_h
+#import "JSONModelLib.h"
 
 @interface RestServices : NSObject
+
+FOUNDATION_EXPORT NSString *const ROOT_SERVICE_URI;
+
+-(void)postMessage:(NSString *) path postData:(JSONModel *) model completion:(void (^)(id responseObject, NSError *error))completion;
 
 @end
 

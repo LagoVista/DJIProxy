@@ -38,6 +38,10 @@
 		5249A32620A9A931000674B6 /* RestServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A32520A9A931000674B6 /* RestServices.m */; };
 		5249A32820A9A944000674B6 /* RouteServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A32720A9A944000674B6 /* RouteServices.m */; };
 		5249A32C20A9A980000674B6 /* DeviceServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 5249A32B20A9A980000674B6 /* DeviceServices.m */; };
+		52792A2520AAF7CB00451795 /* EntityHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52792A2420AAF7CB00451795 /* EntityHeader.m */; };
+		52792A2920AAF97D00451795 /* LagoVistaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52792A2820AAF97D00451795 /* LagoVistaModel.m */; };
+		52792A2D20AAFC0B00451795 /* Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 52792A2C20AAFC0B00451795 /* Error.m */; };
+		52792A2F20AAFC5B00451795 /* InvokeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 52792A2E20AAFC5A00451795 /* InvokeResult.m */; };
 		52B2CA9620A5B388009066EA /* VideoPreviewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2CA9520A5B317009066EA /* VideoPreviewer.framework */; };
 		52B2CA9720A5B388009066EA /* VideoPreviewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52B2CA9520A5B317009066EA /* VideoPreviewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		52B2CA9C20A5B3CE009066EA /* DJICameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B2CA9B20A5B3CE009066EA /* DJICameraViewController.xib */; };
@@ -137,6 +141,14 @@
 		5249A32920A9A960000674B6 /* RouteServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RouteServices.h; sourceTree = "<group>"; };
 		5249A32A20A9A96E000674B6 /* DeviceServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceServices.h; sourceTree = "<group>"; };
 		5249A32B20A9A980000674B6 /* DeviceServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceServices.m; sourceTree = "<group>"; };
+		52792A2420AAF7CB00451795 /* EntityHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntityHeader.m; sourceTree = "<group>"; };
+		52792A2620AAF7E400451795 /* EntityHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntityHeader.h; sourceTree = "<group>"; };
+		52792A2720AAF96C00451795 /* LagoVistaModal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LagoVistaModal.h; sourceTree = "<group>"; };
+		52792A2820AAF97D00451795 /* LagoVistaModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LagoVistaModel.m; sourceTree = "<group>"; };
+		52792A2A20AAFBB100451795 /* InvokeResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvokeResult.h; sourceTree = "<group>"; };
+		52792A2B20AAFBC100451795 /* Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		52792A2C20AAFC0B00451795 /* Error.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Error.m; sourceTree = "<group>"; };
+		52792A2E20AAFC5A00451795 /* InvokeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvokeResult.m; sourceTree = "<group>"; };
 		52B2CA9020A5B317009066EA /* VideoPreviewer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VideoPreviewer.xcodeproj; path = "NuvIoT DJI Proxy/Frameworks/VideoPreviewer/VideoPreviewer.xcodeproj"; sourceTree = "<group>"; };
 		52B2CA9B20A5B3CE009066EA /* DJICameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DJICameraViewController.xib; sourceTree = "<group>"; };
 		52B2CA9D20A5B45D009066EA /* DJICameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DJICameraViewController.h; path = "NuvIoT DJI Proxy/views/DJICameraViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -187,6 +199,7 @@
 		5249A2BB20A87FEE000674B6 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				52792A2E20AAFC5A00451795 /* InvokeResult.m */,
 				5249A2BC20A88004000674B6 /* WayPoint.m */,
 				5249A2BE20A88013000674B6 /* WayPoint.h */,
 				5249A2D720A99833000674B6 /* Route.m */,
@@ -197,6 +210,13 @@
 				5249A31B20A9A800000674B6 /* AuthRequest.m */,
 				5249A31D20A9A812000674B6 /* AuthResponse.m */,
 				5249A31F20A9A82E000674B6 /* AuthResponse.h */,
+				52792A2420AAF7CB00451795 /* EntityHeader.m */,
+				52792A2620AAF7E400451795 /* EntityHeader.h */,
+				52792A2720AAF96C00451795 /* LagoVistaModal.h */,
+				52792A2820AAF97D00451795 /* LagoVistaModel.m */,
+				52792A2A20AAFBB100451795 /* InvokeResult.h */,
+				52792A2B20AAFBC100451795 /* Error.h */,
+				52792A2C20AAFC0B00451795 /* Error.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -489,6 +509,8 @@
 				5249A2A820A72811000674B6 /* MapController.m in Sources */,
 				5249A31820A9A6FC000674B6 /* User.m in Sources */,
 				5249A29720A713E8000674B6 /* AircraftAnnotation.m in Sources */,
+				52792A2920AAF97D00451795 /* LagoVistaModel.m in Sources */,
+				52792A2D20AAFC0B00451795 /* Error.m in Sources */,
 				5249A29F20A716F1000674B6 /* WaypointConfigViewController.m in Sources */,
 				52BA12DB209D048E00A24FBC /* TelemetryViewController.m in Sources */,
 				5249A2BD20A88004000674B6 /* WayPoint.m in Sources */,
@@ -497,6 +519,8 @@
 				5249A2CD20A9971B000674B6 /* RouteTableViewCell.m in Sources */,
 				5249A32220A9A8FD000674B6 /* AuthServices.m in Sources */,
 				5249A29420A7127A000674B6 /* RouteBuilderViewController.m in Sources */,
+				52792A2520AAF7CB00451795 /* EntityHeader.m in Sources */,
+				52792A2F20AAFC5B00451795 /* InvokeResult.m in Sources */,
 				5249A32C20A9A980000674B6 /* DeviceServices.m in Sources */,
 				5249A2B020A72A17000674B6 /* GSButtonViewController.m in Sources */,
 				5249A31C20A9A800000674B6 /* AuthRequest.m in Sources */,

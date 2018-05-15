@@ -9,7 +9,11 @@
 #ifndef AuthRequest_h
 #define AuthRequest_h
 
-@interface AuthRequest : NSObject
+#import "JSONModel.h"
+
+@interface AuthRequest : JSONModel
+@property (nonatomic, strong) NSString *emailAddress;
+@property (nonatomic, strong) NSString *password;
 
 @end
 

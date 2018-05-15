@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "AuthServices.h"
 
 @interface LoginViewController : UIViewController
+
+-(void)login:(AuthRequest *)request;
 
 @end

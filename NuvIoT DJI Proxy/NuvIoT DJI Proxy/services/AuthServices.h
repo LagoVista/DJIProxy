@@ -9,8 +9,10 @@
 #ifndef AuthServices_h
 #define AuthServices_h
 #include "RestServices.h"
-
+#include "AuthRequest.h"
 @interface AuthServices : RestServices
+
+-(void)login:(AuthRequest*)request completion:(void (^)(id responseObject, NSError *error))completion;;
 
 @end
 #endif /* AuthServices_h */

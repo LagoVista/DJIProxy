@@ -12,4 +12,6 @@
 
 @implementation WayPoint
 
+
+
 @end

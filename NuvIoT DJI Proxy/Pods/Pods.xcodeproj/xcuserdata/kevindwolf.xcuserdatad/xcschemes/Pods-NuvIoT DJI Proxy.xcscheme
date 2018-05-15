@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5A62588477AC962ABE2CAE306A31AFE3"
+               BlueprintIdentifier = "80A4E24C52BA9697C251816BC151B88C"
                BlueprintName = "Pods-NuvIoT DJI Proxy"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPods-NuvIoT DJI Proxy.a">

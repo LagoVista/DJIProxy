@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "AuthServices.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *email;
@@ -23,8 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.activityIndicator.hidden = true;
-    
-    self.navigationItem.title = @"NavIoT - DJI Proxy";    
+    _email.text = @"kevinw@slsys.net";
+    _password.text = @"Test1234";
+    self.navigationItem.title = @"NavIoT - DJI Proxy";
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,14 +35,41 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)login:(AuthRequest*)request {
+    AuthServices *srvc = [[AuthServices alloc] init];
+    [srvc login:request completion:^(id responseObject, NSError *error) {
+        
+        if (responseObject) {
+            NSLog(@"Got Response Object");
+            // do what you want with the response object here
+        } else {
+            self.activityIndicator.hidden = true;
+            [self.activityIndicator stopAnimating];
+            self.loginButton.enabled = true;
+            self.email.enabled = true;
+            self.password.enabled = true;
+            
+            NSLog(@"Got failure");
+        }}];
+}
+
 -(IBAction)onLoginClick:(id)sender {
     self.activityIndicator.hidden = false;
     [self.activityIndicator startAnimating];
-    self.loginButton.enabled = false;
-    self.email.enabled = false;
-    self.password.enabled = false;
+     self.loginButton.enabled = false;
+     self.email.enabled = false;
+     self.password.enabled = false;
+  
+    AuthRequest *authRequest = [[AuthRequest alloc] init];
+    authRequest.emailAddress = _email.text;
+    authRequest.password = _password.text;
+    
+    [self performSelectorInBackground:@selector(login:) withObject:authRequest];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 
 /*
 #pragma mark - Navigation
