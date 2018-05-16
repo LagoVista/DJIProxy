@@ -37,7 +37,7 @@
 
 -(void)login:(AuthRequest*)request {
     AuthServices *srvc = [[AuthServices alloc] init];
-    [srvc login:request completion:^(id responseObject, NSError *error) {
+    [srvc login:request completion:^(AuthResponse *responseObject, NSError *error) {
         
         if (responseObject) {
             NSLog(@"Got Response Object");
@@ -61,8 +61,12 @@
      self.password.enabled = false;
   
     AuthRequest *authRequest = [[AuthRequest alloc] init];
-    authRequest.emailAddress = _email.text;
+    authRequest.email = _email.text;
+    authRequest.userName = _email.text;
     authRequest.password = _password.text;
+    authRequest.grantType = @"PASSWORD";
+    authRequest.clientType = @"MobileApp";
+    authRequest.appId = @"DJIMOBILEPROXY";
     
     [self performSelectorInBackground:@selector(login:) withObject:authRequest];
 }

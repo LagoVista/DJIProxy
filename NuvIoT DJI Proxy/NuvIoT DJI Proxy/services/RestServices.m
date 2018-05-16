@@ -51,7 +51,8 @@ NSString *const ROOT_SERVICE_URI = @"https://api.nuviot.com";
                                                                        
                                                                        if (statusCode != 200) {
                                                                            if(data) {
-                                                                               NSLog(@"%@", data);
+                                                                               NSString *json = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
+                                                                               NSLog(@"%@", json);
                                                                            }
                                                                            
                                                                            dispatch_async(dispatch_get_main_queue(), ^{

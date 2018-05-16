@@ -9,8 +9,21 @@
 #ifndef AuthResponse_h
 #define AuthResponse_h
 
-@interface AuthResponse : NSObject
+#import "JSONModel.h"
+#import "EntityHeader.h"
 
+@interface AuthResponse : JSONModel
+
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSString *accessTokenExpiresUTC;
+@property (nonatomic, strong) NSString *refreshToken;
+@property (nonatomic, strong) NSString *refreshTokenExpiresUTC;
+@property (nonatomic, strong) NSString *AppInstanceId;
+
+@property bool isLockedOut;
+@property (nonatomic, strong) EntityHeader *user;
+@property (nonatomic, strong) EntityHeader *org;
+@property (nonatomic, strong) NSArray<EntityHeader *> *roles;
 @end
 
 #endif /* AuthResponse_h */
