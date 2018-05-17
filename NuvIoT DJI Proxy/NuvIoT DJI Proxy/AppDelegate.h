@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #include "./models/User.h"
 
+/* look at : https://github.com/jamztang/JTObjectMapping */
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, atomic) User *user;
+
++(AppDelegate *)theApp;
 
 @end
 

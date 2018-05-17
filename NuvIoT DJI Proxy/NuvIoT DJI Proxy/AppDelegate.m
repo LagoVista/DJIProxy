@@ -16,20 +16,29 @@
 
 #pragma clang diagnostic pop
 
+#import "User.h"
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-BOOL _loggedIn = false;
+static AppDelegate *_theApp;
+
++(AppDelegate *) theApp {
+    return _theApp;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _theApp = self;
+    
+    self.user = [User load];
     
     UINavigationController *rootViewController;
     
-    if(_loggedIn) {
+    if(self.user.isAuthenticated) {
         rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc]
                                                                                  initWithNibName:@"ViewController"  bundle:nil]];
     }

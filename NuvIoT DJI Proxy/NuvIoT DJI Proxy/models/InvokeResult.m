@@ -13,3 +13,15 @@
 @implementation InvokeResult
 
 @end
+
+@implementation InvokeResultEx
+
+@end
+
+@implementation Error
+
+@end
+
+@protocol Error
+
+@end

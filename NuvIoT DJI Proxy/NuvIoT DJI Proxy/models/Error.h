@@ -11,8 +11,4 @@
 
 #import "JSONModel.h"
 
-@interface Error : JSONModel
-@property (strong, nonatomic) NSString *message;
-@end
-
 #endif /* Error_h */

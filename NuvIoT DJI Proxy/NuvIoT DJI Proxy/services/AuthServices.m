@@ -11,14 +11,29 @@
 #include "AuthServices.h"
 #include "../models/AuthRequest.h"
 #include "../models/AuthResponse.h"
+#include "../models/InvokeResult.h"
 @implementation AuthServices
 
--(void)login:(AuthRequest*)authRequest completion:(void (^)(AuthResponse *responseObject, NSError *error))completion; {
+-(void)login:(AuthRequest*)authRequest completion:(void (^)(InvokeResultAuthResponse *responseObject, NSError *error))completion; {
     [self postMessage:@"/api/v1/auth" postData:authRequest completion:^(NSData *responseObject, NSError *error) {
         if (responseObject) {
             NSString *json = [[NSString alloc] initWithData:responseObject encoding:NSNonLossyASCIIStringEncoding];
-            NSLog(@"%@", json);
-            AuthResponse *authResponse = [[AuthResponse alloc] initWithData:responseObject error:nil];
+            NSLog(@"%@",json);
+            NSError *err;
+            
+            InvokeResultAuthResponse *authResponse = [[InvokeResultAuthResponse alloc] initWithString:json error:&err];
+            if(err) {
+                NSLog(@"%@", err.userInfo);
+            }
+            else if(authResponse.successful)
+            {
+                NSLog(@"SUCCESS!");
+            }
+            else
+            {
+                NSLog(@"Not success %@", authResponse.errors[0].message);
+            }
+           
             completion(authResponse, nil);
             // do what you want with the response object here
         } else {

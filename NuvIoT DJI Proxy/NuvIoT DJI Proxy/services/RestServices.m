@@ -33,60 +33,41 @@ NSString *const ROOT_SERVICE_URI = @"https://api.nuviot.com";
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request
-                                                               fromData:postData completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {
-                                                                   if (!data) {
-                                                                       NSLog(@"Error %@", error);
-                                                                       if (completion) {
-                                                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                                                               completion(nil, error);
-                                                                           });
-                                                                       }
-                                                                       return;
-                                                                   }
-                                                                   
-                                                                   if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                                                                       
-                                                                       NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
-                                                                       NSLog(@"HTTP status code: %ld", (long)statusCode);
-                                                                       
-                                                                       if (statusCode != 200) {
-                                                                           if(data) {
-                                                                               NSString *json = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
-                                                                               NSLog(@"%@", json);
-                                                                           }
-                                                                           
-                                                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                                                               completion(nil, [NSError errorWithDomain:@"not success http response" code:statusCode userInfo:nil ]);
-                                                                           });
-                                                                           return;
-                                                                       }
-                                                                   }
-                                                                   
-                                                                   // report any errors parsing the JSON
-                                                                   
-                                                                  /* NSError *parseError = nil;
-                                                                   returnedData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                                                   
-                                                                   if (!returnedData) {
-                                                                       if (completion) {
-                                                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                                                               completion(nil, parseError);
-                                                                           });
-                                                                       }
-                                                                       return;
-                                                                   }*/
-                                                                   
-                                                                   // if everything is ok, then just return the JSON object
-                                                                   
+                                                           fromData:postData completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {
+                                                               if (!data) {
+                                                                   NSLog(@"Error %@", error);
                                                                    if (completion) {
-                                                                       NSLog(@"Response %@", data);
                                                                        dispatch_async(dispatch_get_main_queue(), ^{
-                                                                           completion(data, nil);
+                                                                           completion(nil, error);
                                                                        });
                                                                    }
+                                                                   return;
+                                                               }
+                                                               
+                                                               if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                                                                    
-                                                                   // Handle response here
-                                                               }];
+                                                                   NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+                                                                   NSLog(@"HTTP status code: %ld", (long)statusCode);
+                                                                   
+                                                                   if (statusCode != 200) {
+                                                                       if(data) {
+                                                                           NSString *json = [[NSString alloc] initWithData:data encoding:NSNonLossyASCIIStringEncoding];
+                                                                           NSLog(@"%@", json);
+                                                                       }
+                                                                       
+                                                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                                                           completion(nil, [NSError errorWithDomain:@"not success http response" code:statusCode userInfo:nil ]);
+                                                                       });
+                                                                       return;
+                                                                   }
+                                                               }
+                                                               
+                                                               if (completion) {
+                                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                                       completion(data, nil);
+                                                                   });
+                                                               }
+                                                           }];
     [uploadTask resume];
 }
 

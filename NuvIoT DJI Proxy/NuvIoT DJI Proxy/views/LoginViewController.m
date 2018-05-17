@@ -8,6 +8,10 @@
 
 #import "LoginViewController.h"
 #import "AuthServices.h"
+#import "SysUtils.h"
+#import "User.h"
+#import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *email;
@@ -37,20 +41,34 @@
 
 -(void)login:(AuthRequest*)request {
     AuthServices *srvc = [[AuthServices alloc] init];
-    [srvc login:request completion:^(AuthResponse *responseObject, NSError *error) {
+    [srvc login:request completion:^(InvokeResultAuthResponse *responseObject, NSError *error) {
+        self.activityIndicator.hidden = true;
+        [self.activityIndicator stopAnimating];
+        self.loginButton.enabled = true;
+        self.email.enabled = true;
+        self.password.enabled = true;
         
         if (responseObject) {
-            NSLog(@"Got Response Object");
+            if(!responseObject.successful) {
+                ShowMessage(@"Login", responseObject.errors[0].message, nil, @"OK");
+            }
+            else {
+                [AppDelegate theApp].user.isAuthenticated = true;
+                [AppDelegate theApp].user.userId = responseObject.result.user.id;
+                [AppDelegate theApp].user.email = responseObject.result.user.text;
+                [AppDelegate theApp].user.orgId = responseObject.result.org.id;
+                [AppDelegate theApp].user.orgName = responseObject.result.org.text;
+                [AppDelegate theApp].user.accessToken = responseObject.result.accessToken;
+                [AppDelegate theApp].user.refreshToken = responseObject.result.refreshToken;
+                [[AppDelegate theApp].user save];
+                ViewController *top = [[ViewController alloc] initWithNibName:@"ViewController"  bundle:nil];
+                [self.navigationController pushViewController:top animated:true];
+            }
             // do what you want with the response object here
         } else {
-            self.activityIndicator.hidden = true;
-            [self.activityIndicator stopAnimating];
-            self.loginButton.enabled = true;
-            self.email.enabled = true;
-            self.password.enabled = true;
-            
             NSLog(@"Got failure");
-        }}];
+        }
+      }];
 }
 
 -(IBAction)onLoginClick:(id)sender {
@@ -64,9 +82,10 @@
     authRequest.email = _email.text;
     authRequest.userName = _email.text;
     authRequest.password = _password.text;
-    authRequest.grantType = @"PASSWORD";
+    authRequest.grantType = @"password";
     authRequest.clientType = @"MobileApp";
     authRequest.appId = @"DJIMOBILEPROXY";
+    authRequest.deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     
     [self performSelectorInBackground:@selector(login:) withObject:authRequest];
 }

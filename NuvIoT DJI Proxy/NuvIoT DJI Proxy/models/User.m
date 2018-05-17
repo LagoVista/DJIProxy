@@ -16,15 +16,22 @@
 // be acceptable for securing access/refresh tokens.
 // https://developer.apple.com/documentation/uikit/core_app/protecting_the_user_s_privacy/encrypting_your_app_s_files
 
--(void) load {
++(User *) load {
     NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString* fileName = @"userinfo.json";
     NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
     if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
-        NSString* json = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:fileAtPath] encoding:NSUTF8StringEncoding];
+        NSError *err;
+        User *user = [[User alloc] initWithData:[NSData dataWithContentsOfFile:fileAtPath] error:&err];
+        
+        if(!err) {
+            return user;
+        }
     }
   
-    self.IsAuthenticated = false;
+    User *user = [User alloc];
+    user.isAuthenticated = false;
+    return user;
 }
 
 -(void) save {
@@ -36,7 +43,7 @@
         [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:nil attributes:nil];
     }
     
-    NSString *json;
+    NSString *json = [self toJSONString];
     
     // The main act...
     [[json dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];

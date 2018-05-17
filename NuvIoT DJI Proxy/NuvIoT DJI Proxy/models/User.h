@@ -9,18 +9,20 @@
 #ifndef User_h
 #define User_h
 
-@interface User : NSObject
+#include "JSONModel.h"
 
-@property BOOL *IsAuthenticated;
-@property (nonatomic, strong) NSString *UserId;
-@property (nonatomic, strong) NSString *UserName;
-@property (nonatomic, strong) NSString *OrgId;
-@property (nonatomic, strong) NSString *OrgName;
-@property (nonatomic, strong) NSString *Email;
-@property (nonatomic, strong) NSString *AuthToken;
-@property (nonatomic, strong) NSString *RefreshToken;
+@interface User : JSONModel
 
--(void) load;
+@property BOOL isAuthenticated;
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *orgId;
+@property (nonatomic, strong) NSString *orgName;
+@property (nonatomic, strong) NSString *rmail;
+@property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) NSString *refreshToken;
+
++(User *) load;
 -(void) save;
 
 @end

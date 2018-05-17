@@ -11,19 +11,27 @@
 
 #import "JSONModel.h"
 #import "EntityHeader.h"
+#import "InvokeResult.h"
 
 @interface AuthResponse : JSONModel
 
-@property (nonatomic, strong) NSString *accessToken;
-@property (nonatomic, strong) NSString *accessTokenExpiresUTC;
-@property (nonatomic, strong) NSString *refreshToken;
-@property (nonatomic, strong) NSString *refreshTokenExpiresUTC;
-@property (nonatomic, strong) NSString *AppInstanceId;
+@property (nonatomic) NSString *accessToken;
+@property (nonatomic) NSString *accessTokenExpiresUTC;
+@property (nonatomic) NSString *refreshToken;
+@property (nonatomic) NSString *refreshTokenExpiresUTC;
+@property (nonatomic) NSString *appInstanceId;
 
 @property bool isLockedOut;
-@property (nonatomic, strong) EntityHeader *user;
-@property (nonatomic, strong) EntityHeader *org;
-@property (nonatomic, strong) NSArray<EntityHeader *> *roles;
+@property (nonatomic) EntityHeader *user;
+@property (nonatomic) EntityHeader *org;
+@property (nonatomic) NSArray<EntityHeader *> *roles;
+
+@end
+
+@interface InvokeResultAuthResponse : InvokeResult
+
+@property (nonatomic) AuthResponse *result;
+
 @end
 
 #endif /* AuthResponse_h */

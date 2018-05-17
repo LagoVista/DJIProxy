@@ -13,3 +13,7 @@
 @implementation AuthResponse
 
 @end
+
+@implementation InvokeResultAuthResponse
+
+@end

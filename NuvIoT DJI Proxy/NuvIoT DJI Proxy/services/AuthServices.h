@@ -10,11 +10,10 @@
 #define AuthServices_h
 #include "RestServices.h"
 #include "AuthRequest.h"
-
 #include "../models/AuthResponse.h"
 @interface AuthServices : RestServices
 
--(void)login:(AuthRequest*)request completion:(void (^)(AuthResponse *responseObject, NSError *error))completion;;
+-(void)login:(AuthRequest*)request completion:(void (^)(InvokeResultAuthResponse *responseObject, NSError *error))completion;
 
 @end
 #endif /* AuthServices_h */

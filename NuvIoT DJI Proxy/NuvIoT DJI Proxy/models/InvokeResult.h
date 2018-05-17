@@ -10,11 +10,31 @@
 #define InvokeResult_h
 
 #import "JSONModel.h"
+#import "Error.h"
 
-@interface InvokeResult : JSONModel
+@protocol Error;
+
+@interface Error : JSONModel
+@property (strong, nonatomic) NSString *message;
+@property (strong, nonatomic) NSString *errorCode;
+@property BOOL systemError;
+@property (strong, nonatomic) NSString *details;
+@end
+
+
+@interface InvokeResult: JSONModel
 @property BOOL successful;
-@property NSArray *errors;
-@property JSONModel *result;
+@property NSString *resultId;
+@property NSArray<Error *> <Error> *errors;
+@property NSArray<Error *> <Error> *warnings;
+@end
+
+@interface InvokeResultEx: JSONModel
+@property BOOL successful;
+@property NSString *resultId;
+@property NSArray<Error *> <Error> *errors;
+@property NSArray<Error *> <Error> *warnings;
+@property (nonatomic) NSString <Optional> *result;
 @end
 
 #endif /* InvokeResult_h */

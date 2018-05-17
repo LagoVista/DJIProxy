@@ -11,8 +11,8 @@
 
 @interface EntityHeader : JSONModel
 
-@property (strong, nonatomic) NSString *id;
-@property (strong, nonatomic) NSString *text;
+@property (strong) NSString *id;
+@property (strong) NSString *text;
 
 @end
 
