@@ -60,6 +60,11 @@
     [self startUpdateLocation];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeLeft) forKey:@"orientation"];
+    [UINavigationController attemptRotationToDeviceOrientation];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -123,6 +128,9 @@
     // my code
 }
 
+-(BOOL)shouldAutorotate {
+    return NO;
+}
 
 #pragma mark Init Methods
 -(void)initData{

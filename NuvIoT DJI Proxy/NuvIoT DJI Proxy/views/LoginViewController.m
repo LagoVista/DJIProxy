@@ -54,15 +54,18 @@
             }
             else {
                 [AppDelegate theApp].user.isAuthenticated = true;
+                [AppDelegate theApp].user.appInstanceId = responseObject.result.appInstanceId;
                 [AppDelegate theApp].user.userId = responseObject.result.user.id;
                 [AppDelegate theApp].user.email = responseObject.result.user.text;
                 [AppDelegate theApp].user.orgId = responseObject.result.org.id;
                 [AppDelegate theApp].user.orgName = responseObject.result.org.text;
                 [AppDelegate theApp].user.accessToken = responseObject.result.accessToken;
+                [AppDelegate theApp].user.accessTokenExpiresUTC = responseObject.result.accessTokenExpiresUTC;
                 [AppDelegate theApp].user.refreshToken = responseObject.result.refreshToken;
+                [AppDelegate theApp].user.refreshTokenExpiresUTC = responseObject.result.refreshTokenExpiresUTC;
                 [[AppDelegate theApp].user save];
-                ViewController *top = [[ViewController alloc] initWithNibName:@"ViewController"  bundle:nil];
-                [self.navigationController pushViewController:top animated:true];
+                ViewController *mainMenu = [[ViewController alloc] initWithNibName:@"ViewController"  bundle:nil];
+                [self.navigationController pushViewController:mainMenu animated:true];
             }
             // do what you want with the response object here
         } else {

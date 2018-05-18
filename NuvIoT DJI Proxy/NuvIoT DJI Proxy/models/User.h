@@ -14,13 +14,15 @@
 @interface User : JSONModel
 
 @property BOOL isAuthenticated;
+@property (nonatomic, strong) NSString *appInstanceId;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *orgId;
 @property (nonatomic, strong) NSString *orgName;
-@property (nonatomic, strong) NSString *rmail;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *refreshToken;
+@property (nonatomic, strong) NSString *accessTokenExpiresUTC;
+@property (nonatomic, strong) NSString *refreshTokenExpiresUTC;
 
 +(User *) load;
 -(void) save;

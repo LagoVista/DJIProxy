@@ -20,12 +20,15 @@
     NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString* fileName = @"userinfo.json";
     NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
         NSError *err;
         User *user = [[User alloc] initWithData:[NSData dataWithContentsOfFile:fileAtPath] error:&err];
         
         if(!err) {
             return user;
+        }
+        else {
+            NSLog(@"%@ - %@", err, err.userInfo);
         }
     }
   

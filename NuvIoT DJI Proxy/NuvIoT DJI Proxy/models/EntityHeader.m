@@ -7,3 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#include "EntityHeader.h"
+
+@implementation EntityHeader
+
+@end

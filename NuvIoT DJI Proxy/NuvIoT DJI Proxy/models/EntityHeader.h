@@ -9,10 +9,12 @@
 #ifndef EntityHeader_h
 #define EntityHeader_h
 
+#include "JSONModel.h"
+
 @interface EntityHeader : JSONModel
 
-@property (strong) NSString *id;
-@property (strong) NSString *text;
+@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *text;
 
 @end
 

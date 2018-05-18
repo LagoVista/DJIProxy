@@ -37,14 +37,15 @@
 
 @implementation DJICameraViewController
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self registerApp];
+    
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeLeft) forKey:@"orientation"];
+    [UINavigationController attemptRotationToDeviceOrientation];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     DJICamera *camera = [self fetchCamera];
     if (camera && camera.delegate == self) {
