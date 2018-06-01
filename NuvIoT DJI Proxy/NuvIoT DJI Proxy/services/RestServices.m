@@ -10,10 +10,43 @@
 
 #import "RestServices.h"
 #import "JSONModelLib.h"
+#import "User.h"
 
 @implementation RestServices
 
 NSString *const ROOT_SERVICE_URI = @"https://api.nuviot.com";
+
+-(void)refreshAuthToken:(AuthRequest*)authRequest completion:(void (^)(InvokeResultAuthResponse *responseObject, NSError *error))completion; {
+    [self postMessage:@"/api/v1/auth" postData:authRequest completion:^(NSData *responseObject, NSError *error) {
+        if (responseObject) {
+            NSString *json = [[NSString alloc] initWithData:responseObject encoding:NSNonLossyASCIIStringEncoding];
+            NSLog(@"%@",json);
+            NSError *err;
+            
+            InvokeResultAuthResponse *authResponse = [[InvokeResultAuthResponse alloc] initWithString:json error:&err];
+            if(err) {
+                NSLog(@"%@", err.userInfo);
+            }
+            else if(authResponse.successful)
+            {
+                NSLog(@"SUCCESS!");
+            }
+            else
+            {
+                NSLog(@"Not success %@", authResponse.errors[0].message);
+            }
+            
+            completion(authResponse, nil);
+            // do what you want with the response object here
+        } else {
+            completion(nil, error);
+        }}
+     ];
+}
+
+-(NSString*) getAuthToken {
+    return [User current].accessToken;
+}
 
 -(void)postMessage:(NSString *) path postData:(JSONModel *) model completion:(void (^)(id responseObject, NSError *error))completion {
     NSString *str = [NSString stringWithFormat:@"%@%@", ROOT_SERVICE_URI, path];

@@ -24,7 +24,11 @@
 @property (nonatomic, strong) NSString *accessTokenExpiresUTC;
 @property (nonatomic, strong) NSString *refreshTokenExpiresUTC;
 
+@property (readonly) bool accessTokenValid;
+@property (readonly) bool refreshTokenValid;
+
 +(User *) load;
++(User *) current;
 -(void) save;
 
 @end

@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #include "AuthServices.h"
-#include "../models/AuthRequest.h"
-#include "../models/AuthResponse.h"
-#include "../models/InvokeResult.h"
 @implementation AuthServices
 
 -(void)login:(AuthRequest*)authRequest completion:(void (^)(InvokeResultAuthResponse *responseObject, NSError *error))completion; {
